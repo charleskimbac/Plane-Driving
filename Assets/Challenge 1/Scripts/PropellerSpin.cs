@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PropellerSpin : MonoBehaviour
 {
-    public GameObject propeller;
 
     // Start is called before the first frame update
     void Start()
@@ -15,8 +14,13 @@ public class PropellerSpin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        propeller.transform.rotation = Quaternion.Euler(0, 0, propeller.transform.rotation.eulerAngles.z + 4);
-        Debug.Log(Quaternion.Euler(0, 0, propeller.transform.rotation.eulerAngles.z).eulerAngles);
-        Debug.Log(propeller.transform.rotation.x);
+        Vector3 rotation = transform.localEulerAngles;
+        //rotation.z += .0001f;
+        transform.Rotate(rotation);
+        Debug.Log(transform.localEulerAngles);
+
+        //all of this doesn't work xd
+        //transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 4);
+        //transform.Rotate(new Vector3(0, 0, transform.rotation.eulerAngles.z + 4));
     }
 }
